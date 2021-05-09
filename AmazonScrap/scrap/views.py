@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 
 HEADERS = ({'User-Agent':
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/601.36', 
             'Accept-Language': 'en-US, en;q=0.5'})
 
 ##########################################################
@@ -15,14 +15,14 @@ HEADERS = ({'User-Agent':
 def interface(request):
     if request.method == 'POST':
         product_name = request.POST['product_name']
-        try: 
-            product_list = amazon_getSearchResult(product_name)
-            if not product_list:
-                print("\nWARNING: The user agent might have been temporarily banned. Please replace the HEADERS with a valid one, or try again later.\n")
-                product_list = [["https://developers.whatismybrowser.com", "Empty", "Empty", "Empty"]]
-            return render(request, 'products.html', {'product_list':product_list})
-        except: 
-            return HttpResponse("Sorry, something went wrong. ")
+        #try: 
+        product_list = amazon_getSearchResult(product_name)
+        if not product_list:
+            print("\nWARNING: The user agent might have been temporarily banned. Please replace the HEADERS with a valid one, or try again later.\n")
+            product_list = [["https://developers.whatismybrowser.com", "Empty", "Empty", "Empty"]]
+        return render(request, 'products.html', {'product_list':product_list})
+        #except: 
+            #return HttpResponse("Sorry, something went wrong. ")
     else:
         return render(request, 'products.html')
 

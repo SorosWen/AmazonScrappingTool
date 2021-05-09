@@ -9,17 +9,16 @@
     <button type = "submit" value = "Submit">Search</button>
 </form>
 
+
 {% if product_list %}
-    <table border = "1" cellpadding = "5" cellspacing = "5">
-        <td>Name</td>
-        <td>Price</td>
-        <td>Rating</td>
-        {% for product in product_list %}
-            <tr>
-                <td><a href='{{product.0}}'>{{product.1}}</a></td>
-                <td>{{product.2}}</td>
-                <td>{{product.3}}</td>
-            </tr>
-        {% endfor %}
-    </table>    
+    <div class="wrapper">
+    {% for product in product_list %}
+        <div class="item">
+            <a href='{{product.0}}'>{{product.1}}</a><br>
+            {{product.2}}<br>
+            {{product.3}}
+        </div>
+    {% endfor %}
+    </div>
 {% endif %}
+
