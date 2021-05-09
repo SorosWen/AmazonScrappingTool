@@ -1,0 +1,25 @@
+<head>
+    <h1>Amazon Product Search Result</h1>
+</head>
+
+<form action = "" method = "POST" id = "product_search">
+    {% csrf_token %}
+    <label for="product_name"> Please enter a product name </label>
+    <input type="text" id = "product_name" name = "product_name" required>
+    <button type = "submit" value = "Submit">Search</button>
+</form>
+
+{% if product_list %}
+    <table border = "1" cellpadding = "5" cellspacing = "5">
+        <td>Name</td>
+        <td>Price</td>
+        <td>Rating</td>
+        {% for product in product_list %}
+            <tr>
+                <td><a href='{{product.0}}'>{{product.1}}</a></td>
+                <td>{{product.2}}</td>
+                <td>{{product.3}}</td>
+            </tr>
+        {% endfor %}
+    </table>    
+{% endif %}
