@@ -3,17 +3,28 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'scrap/style.css' %}">
 
-    <div class="header">
-        <h1>Product Search</h1>
+    <div class="topnav">
+        <a class="active">Product Search</a>
+        <a href="https://github.com/SorosWen">Github</a>
+        <a href="https://www.linkedin.com/in/soros-wen-0725/">Linkedin</a>
     </div>
 
     <form action = "" method = "POST" id = "product_search">
         {% csrf_token %}
         <label for="product_name"> <br>Please enter a product name </label>
         <input type="text" id = "product_name" name = "product_name" required>
-        <button type = "submit" value = "Submit">Search</button>
+        <button type = "submit" value = "Submit" onclick="loadingMessage()">Search</button>
     </form>
 
+    <p id="loading"></p>
+    <p id="fun fact"></p>
+
+    <script>
+        function loadingMessage() {
+            document.getElementById("loading").innerHTML = "Please wait while we scrape data.... ";
+            document.getElementById("fun fact").innerHTML = "Fun Fact: it's possible to lead a cow upstairs... but not downstairs.";
+        }
+    </script>
 
     {% if amazon_list %}
         <h3>{{product_name}} on Amazon: </h3>
@@ -23,6 +34,7 @@
                 <a href='{{product.0}}' style="color: #FF9900; text-decoration: none">{{product.1}}</a><br>
                 {{product.2}}<br>
                 {{product.3}}<br>
+                {{product.4}}<br>
             </div>
         {% endfor %}
         </div>
