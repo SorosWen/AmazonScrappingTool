@@ -1,12 +1,12 @@
 .wrapper{
     max-height: 120px;
-    border: 1px solid;
+    border: 1px solid green;
     display: flex;
     overflow-x: auto;
 }
 
 .wrapper::-webkit-scrollbar{
-    width: 0;
+    width: 1;
 }
 
 .wrapper .item{
@@ -14,5 +14,6 @@
     height: 110px;
     line-height: 110px;
     text-align: center;
+    background-color: red; 
     margin-right: 2px;
 }
