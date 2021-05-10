@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 
 HEADERS = ({'User-Agent':
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/601.36', 
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/572.36', 
             'Accept-Language': 'en-US, en;q=0.5'})
 
 ##########################################################
@@ -33,7 +33,7 @@ def amazon_getSearchResult(product_name):
     soup = BeautifulSoup(webpage.content, "lxml")
     links = soup.find_all("a", attrs={'class':'a-link-normal s-no-outline'})
     product_list = []
-    count = 10
+    count = 12
     for link in links: 
         link = "https://www.amazon.com" + link.get('href')
         product_list.append(amazon_product(link))

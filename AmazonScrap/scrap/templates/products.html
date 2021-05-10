@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{% static 'scrap/style.css' %}">
 
     <head>
-        <h1>Amazon Product Search Result</h1>
+        <h1>Product Search Result</h1>
     </head>
 
     <form action = "" method = "POST" id = "product_search">
@@ -16,10 +16,11 @@
 
 
     {% if product_list %}
+        <h3>Amazon: </h3>
         <div class="wrapper">
         {% for product in product_list %}
             <div class="item">
-                <a href='{{product.0}}'>{{product.1}}</a><br>
+                <a href='{{product.0}}' style="color: green">{{product.1}}</a><br>
                 {{product.2}}<br>
                 {{product.3}}<br>
             </div>
