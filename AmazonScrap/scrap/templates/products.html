@@ -3,29 +3,44 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'scrap/style.css' %}">
 
-    <head>
-        <h1>Product Search Result</h1>
-    </head>
+    <div class="header">
+        <h1>Product Search</h1>
+    </div>
 
     <form action = "" method = "POST" id = "product_search">
         {% csrf_token %}
-        <label for="product_name"> Please enter a product name </label>
+        <label for="product_name"> <br>Please enter a product name </label>
         <input type="text" id = "product_name" name = "product_name" required>
         <button type = "submit" value = "Submit">Search</button>
     </form>
 
 
-    {% if product_list %}
-        <h3>Amazon: </h3>
+    {% if amazon_list %}
+        <h3>{{product_name}} on Amazon: </h3>
         <div class="wrapper">
-        {% for product in product_list %}
+        {% for product in amazon_list %}
             <div class="item">
-                <a href='{{product.0}}' style="color: green">{{product.1}}</a><br>
+                <a href='{{product.0}}' style="color: #FF9900; text-decoration: none">{{product.1}}</a><br>
                 {{product.2}}<br>
                 {{product.3}}<br>
             </div>
         {% endfor %}
         </div>
     {% endif %}
+
+
+    {% if ebay_list %}
+        <h3>{{product_name}} on Ebay: </h3>
+        <div class="wrapper">
+        {% for product in ebay_list %}
+            <div class="item">
+                <a href='{{product.0}}' style="color: green; text-decoration: none">{{product.1}}</a><br>
+                {{product.2}}<br>
+                {{product.3}}<br>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+
 
 </html>
