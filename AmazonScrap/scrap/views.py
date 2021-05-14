@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 
 HEADERS = ({'User-Agent':
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/679.36', 
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/908.36', 
             'Accept-Language': 'en-US, en;q=0.5'})
 product_number = 12
 
@@ -22,9 +22,11 @@ def interface(request):
 ##########################################################
 # Recommend Result #######################################
 ##########################################################
+#def getRecommendation(amazon_list):
 
 ##########################################################
-# Amazon Product Result #################################
+# Amazon Product Result ##################################
+# [url, title, price, rating, review]#####################
 ##########################################################
 def amazon_getSearchResult(product_name):
     url = 'https://www.amazon.com/s?k=' + product_name.replace(' ', '+')
@@ -44,7 +46,7 @@ def amazon_getSearchResult(product_name):
         print("\nWARNING: The user agent might have been temporarily banned. Please replace the HEADERS with a valid one, or try again later.\n")
         product_list = [["https://developers.whatismybrowser.com", "Empty", "Empty", "Empty"]]
     return product_list
- 
+
 def amazon_product(url):
     webpage = requests.get(url, headers=HEADERS)
     soup = BeautifulSoup(webpage.content, "lxml")
