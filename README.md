@@ -10,5 +10,6 @@ There are two scraper in this project:
 Python, Django, BeautifulSoup, HTML & CSS
 
 #Project Update: 
+
 May 15th 2020: 
   The functionality of this application is complete. Currently I am working on deploying this project on free web services such as AWS and Google Cloud. In the past week I tried to deploy it on AWS but encountered an configuration issue with the AWS environmet. Now I am trying to do it on Google Cloud. 
