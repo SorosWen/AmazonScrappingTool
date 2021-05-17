@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, SoupStrainer
 import requests
+import time
 
 HEADERS = ({'User-Agent':
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/908.36', 
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 
             'Accept-Language': 'en-US, en;q=0.5'})
 product_number = 12
 
@@ -31,8 +32,8 @@ def interface(request):
 def amazon_getSearchResult(product_name):
     url = 'https://www.amazon.com/s?k=' + product_name.replace(' ', '+')
     webpage = requests.get(url, headers = HEADERS)
-    soup = BeautifulSoup(webpage.content, "lxml")
-    links = soup.find_all("a", attrs={'class':'a-link-normal s-no-outline'})
+    soup = BeautifulSoup(webpage.content, "lxml", parse_only=SoupStrainer("a", {'class':'a-link-normal s-no-outline'}))
+    links = soup.find_all("a", attrs={'class':'a-link-normal s-no-outline'})[0: 15]
     product_list = []
     count = product_number
     for link in links: 
@@ -49,7 +50,7 @@ def amazon_getSearchResult(product_name):
 
 def amazon_product(url):
     webpage = requests.get(url, headers=HEADERS)
-    soup = BeautifulSoup(webpage.content, "lxml")
+    soup = BeautifulSoup(webpage.content, "lxml", parse_only=SoupStrainer("span"))
     title = get_title(soup)
     price = get_price(soup)
     rating = get_rating(soup)
@@ -63,7 +64,7 @@ def get_title(soup):
         try: 
             title = soup.find("span", attrs={"class": 'a-size-large qa-title-text'}).text.replace('\n', '').replace('\'', '')
         except: 
-            title = ""
+            title = "N/A"
     return title
 
 def get_price(soup):
@@ -71,19 +72,16 @@ def get_price(soup):
         price = soup.find("span", attrs={'id':'priceblock_ourprice'}).string.strip()
     except:
         try: 
-            price = soup.find("span", attrs={'class': 'a-size-large a-color-price'}).string
+            price = soup.find("span", attrs={'class': 'a-offscreen'}).string
         except: 
-            price = ""
+            price = "N/A"
     return price
 
 def get_rating(soup):
     try:
-        rating = soup.find("i", attrs={'class':'a-icon a-icon-star a-star-4-5'}).string.strip()
+        rating = soup.find("span", attrs={'class':'a-icon-alt'}).string.strip()
     except:
-        try:
-            rating = soup.find("span", attrs={'class':'a-icon-alt'}).string.strip()
-        except:
-            rating = ""
+        rating = ""
     return rating
 
 def get_reviewNum(soup): 
@@ -99,8 +97,8 @@ def get_reviewNum(soup):
 def ebay_getSearchResult(product_name):
     url = 'https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2380057.m570&_nkw=' + product_name.replace(' ', '+') + '&_sacat=0'
     webpage = requests.get(url, headers = HEADERS)
-    soup = BeautifulSoup(webpage.content, "lxml")
-    links = soup.find_all("a", attrs={'class':'s-item__link'})
+    soup = BeautifulSoup(webpage.content, "lxml", parse_only=SoupStrainer("a", {'class':'s-item__link'}))
+    links = soup.find_all("a", attrs={'class':'s-item__link'})[0: 15]
     product_list = []
     count = product_number
     for link in links: 
@@ -114,7 +112,7 @@ def ebay_getSearchResult(product_name):
 
 def ebay_product(url):
     webpage = requests.get(url)
-    soup = BeautifulSoup(webpage.text, "html.parser")
+    soup = BeautifulSoup(webpage.text, "html.parser", parse_only=SoupStrainer(["title", "span", "div"]))
     title = ebay_get_title(soup)
     price = ebay_get_price(soup)
     condition = ebay_get_condition(soup)
@@ -130,13 +128,16 @@ def ebay_get_title(soup):
 def ebay_get_price(soup):
     try:
         price = soup.find("span", attrs={'id':'prcIsum'}).string.replace('US ', '').replace('/ea', '').strip()
-    except:
-        price = "N/A"
+    except: 
+        try:
+            price = soup.find("span", attrs={'class':'notranslate', 'itemprop':'price'}).string.replace('US', '').replace(' ', '').strip()
+        except:
+            price = "N/A"
     return price
 
 def ebay_get_condition(soup):
     try:
-        condition = soup.find("div", attrs={'id':'vi-itm-cond'}).string
+        condition = soup.find("div", attrs={'id':'vi-itm-cond'}).text
     except:
         condition = "N/A"
     return condition
