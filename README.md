@@ -24,4 +24,4 @@ May 16th 2020:
 Tested deploying a sample project on Google Cloud. The deployment was successful. The nest step is to deploy the real project to Google Cloud. 
 
 May 17th 2020: 
-Testing the possibility of scrapping only a portion of the webpage instead of the entire webpage to improve scrapper performance. 
+Improved the scraper performance using SoupStrainer. The processing is now 20% faster. 
