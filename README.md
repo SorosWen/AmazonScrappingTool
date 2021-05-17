@@ -6,6 +6,9 @@ There are two scraper in this project:
 1. Amazon/eBay product search page scraper: scrape all urls containing product information
 2. Amazon/eBay product information scraper: scrape product name, price, rating, review from a product page. 
 
+# View this App on Google Cloud
+https://django-project-313903.uc.r.appspot.com
+
 # Tools Involved
 Python, Django, BeautifulSoup, HTML & CSS
 
