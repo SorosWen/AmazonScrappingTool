@@ -8,6 +8,7 @@ There are two scraper in this project:
 
 # See this App on Google Cloud
 https://django-project-313903.uc.r.appspot.com
+
 Note that the deployed application was configured for production environment. 
 
 # Tools Involved
