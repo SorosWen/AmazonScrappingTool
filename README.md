@@ -6,11 +6,12 @@ There are two scraper in this project:
 1. Amazon/eBay product search page scraper: scrape all urls containing product information
 2. Amazon/eBay product information scraper: scrape product name, price, rating, review from a product page. 
 
-# View this App on Google Cloud
+# See this App on Google Cloud
 https://django-project-313903.uc.r.appspot.com
+Note that the deployed application was configured for production environment. 
 
 # Tools Involved
-Python, Django, BeautifulSoup, HTML & CSS
+Python, Django, BeautifulSoup, HTML & CSS, Google Cloud
 
 #Project Update: 
 
@@ -19,3 +20,6 @@ The functionality of this application is complete. Currently I am working on dep
 
 May 16th 2020:
 Tested deploying a sample project on Google Cloud. The deployment was successful. The nest step is to deploy the real project to Google Cloud. 
+
+May 17th 2020: 
+Testing the possibility of scrapping only a portion of the webpage instead of the entire webpage to improve scrapper performance. 
