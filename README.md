@@ -12,8 +12,8 @@ https://django-project-313903.uc.r.appspot.com
 Note that the deployed application was configured for production environment. The configuration detail is not published on this repository for account security. 
 
 # Tools Involved
-Language and Tools: Python, HTML, CSS.  
 
+- Language and Tools: Python, HTML, CSS.  
 - Framework: Django. 
 - Package: BeautifulSoup, SoupStainer. 
 - Publisher: Google Cloud. 
