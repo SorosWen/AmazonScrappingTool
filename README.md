@@ -14,6 +14,6 @@ Note that the deployed application was configured for production environment. Th
 # Tools Involved
 Language and Tools: Python, HTML, CSS.  
 
--Framework: Django. 
--Package: BeautifulSoup, SoupStainer. 
--Publisher: Google Cloud. 
+- Framework: Django. 
+- Package: BeautifulSoup, SoupStainer. 
+- Publisher: Google Cloud. 
