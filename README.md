@@ -11,7 +11,7 @@ There are two scraper in this project:
 
 Sample Image: 
 
-![plot](./Testing Files/demo.png)
+![GitHub Logo](/images/demo.png)
 
 Performance: 
 - Each product info takes roughly 1.5 sec to process, with total of 24 products. 
