@@ -2,7 +2,7 @@
 This is a personal project as an extension of the 411 project. 
 The purpose of this project is to explore functionalities of BeautifulSoup, not for any commercial use. 
 
-**What this Application does: **
+**What this Application does:**
 - The application takes a product name and fetch related product information from Amazon and eBay. 
 
 There are two scraper in this project: 
