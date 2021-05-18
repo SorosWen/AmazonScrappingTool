@@ -9,6 +9,10 @@ There are two scraper in this project:
 1. Amazon/eBay product search page scraper: scrape all urls containing product urls. 
 2. Amazon/eBay product information scraper: scrape product name, price, rating, review from a product page. 
 
+Sample Image: 
+
+![plot](./Testing Files/demo.png)
+
 Performance: 
 - Each product info takes roughly 1.5 sec to process, with total of 24 products. 
 - The total wait time is around 25 sec. 
