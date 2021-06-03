@@ -17,7 +17,7 @@ There are two scraper in this project:
 - Each product info takes roughly 1.5 sec to process, with total of 24 products. 
 - The total wait time is around 25 sec. 
 
-# See this App on Google Cloud
+# See this App on Google Cloud (This App is currently offline due to a payment issue)
 https://django-project-313903.uc.r.appspot.com
 
 Note that the deployed application was configured for production environment. The configuration detail is not published on this repository for account security. 
