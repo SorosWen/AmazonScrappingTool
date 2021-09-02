@@ -18,7 +18,7 @@ There are two scraper in this project:
 - The total wait time is around 25 sec. 
 
 # See this App on Google Cloud (This App is currently offline due to a payment issue)
-https://django-project-313903.uc.r.appspot.com
+~~https://django-project-313903.uc.r.appspot.com~~
 
 Note that the deployed application was configured for production environment. The configuration detail is not published on this repository for account security. 
 
