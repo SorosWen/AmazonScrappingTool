@@ -1,6 +1,6 @@
 # Amazona and eBay Scraper using BeautifulSoup
 This is a personal project as an extension of the 411 project. 
-The purpose of this project is to explore functionalities of BeautifulSoup, not for any commercial use. 
+The purpose of this project is to explore functionalities of BeautifulSoup and its integration with Python, not for any commercial use. 
 
 **What this Application does:**
 - The application takes a product name and fetch related product information from Amazon and eBay. 
@@ -14,11 +14,11 @@ There are two scraper in this project:
 ![GitHub Logo](/images/demo.png)
 
 **Performance:**
-- Each product info takes roughly 1.5 sec to process, with total of 24 products. 
-- The total wait time is around 25 sec. 
+- Each product page takes roughly 1.5 sec to scrap. A total of around 24 pages are being scrapped during each search. 
+- The total wait time of each search is around 25 sec. 
 
-# See this App on Google Cloud (This App is currently offline due to a payment issue)
-~~https://django-project-313903.uc.r.appspot.com~~
+# See this App on Google Cloud 
+~~https://django-project-313903.uc.r.appspot.com~~ (This App is currently offline due to a payment issue). However, feel free to download and run this app locally. 
 
 Note that the deployed application was configured for production environment. The configuration detail is not published on this repository for account security. 
 
